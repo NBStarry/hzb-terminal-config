@@ -1,0 +1,14 @@
+# ~/.zshrc.local — machine-specific & sensitive settings.
+# Copy this to ~/.zshrc.local and fill in your own values.
+# This file is sourced at the end of ~/.zshrc and is NOT committed to git.
+
+# --- Kubernetes ---
+# export KUBECONFIG="$HOME/path/to/your-kubeconfig.yaml"
+
+# --- Local proxy (Clash / Verge etc.) ---
+# export https_proxy=http://127.0.0.1:7897
+# export http_proxy=http://127.0.0.1:7897
+# export all_proxy=socks5://127.0.0.1:7897
+
+# --- Any other private aliases / tokens ---
+# export SOME_API_TOKEN="..."

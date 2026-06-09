@@ -1,0 +1,7 @@
+# ============================================
+# Ghostty macOS 专属配置（App Support 路径）
+# 用途：绕过 1.3.x 已知 bug —— quick-terminal-size 放在 ~/.config 下
+# 时常不被 GUI 初始化读到。放这里(后加载、覆盖 XDG)可稳定生效。
+# 主配置仍在 ~/.config/ghostty/config，这里只放下拉终端尺寸覆盖。
+# ============================================
+quick-terminal-size = 50%,80%

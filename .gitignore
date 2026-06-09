@@ -1,0 +1,5 @@
+.DS_Store
+*.sync-conflict-*
+# Never commit the real machine-local zsh overrides
+zsh/.zshrc.local
+.zshrc.local
