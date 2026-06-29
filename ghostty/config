@@ -50,6 +50,12 @@ clipboard-paste-bracketed-safe = true
 
 # --- Shell Integration ---
 shell-integration = zsh
+# SSH 集成：解决 SSH 到远程机器后退格/方向键/清屏/中文等输入错乱。
+# 根因：Ghostty 默认 TERM=xterm-ghostty，而远程机器没有该 terminfo。
+#   ssh-terminfo : SSH 时自动把本机 xterm-ghostty terminfo 安装到远程 ~/.terminfo（根治）
+#   ssh-env      : 兜底，terminfo 装不上时把 TERM 降级为 xterm-256color 传给远程
+# 注意：此项会整体替换默认 features，故把默认的 cursor,title 一并列出。
+shell-integration-features = cursor,title,ssh-env,ssh-terminfo
 
 # --- Claude 专属优化 ---
 # initial-command = /opt/homebrew/bin/claude   # 装好claude-code后再取消注释
