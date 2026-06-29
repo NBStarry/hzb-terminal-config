@@ -22,8 +22,14 @@ source $ZSH/oh-my-zsh.sh
 
 # zsh-autosuggestions / zsh-syntax-highlighting (installed via Homebrew):
 #   brew install zsh-autosuggestions zsh-syntax-highlighting
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if command -v brew >/dev/null 2>&1; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  [ -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && \
+    source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  [ -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && \
+    source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  unset HOMEBREW_PREFIX
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -68,3 +74,7 @@ alias oc-continue='opencode attach http://127.0.0.1:4096 --dir "$PWD" --continue
 # See zsh/.zshrc.local.example for a template.
 # ============================================================
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+
+# GitHub MCP server token (复用 gh CLI 凭证) — 由 claude /doctor 修复添加
+export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token 2>/dev/null)"
+
